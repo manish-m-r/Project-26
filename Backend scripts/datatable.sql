@@ -20,4 +20,5 @@ db.createCollection( <name>,
      collation: <document>,         // Added in MongoDB 3.4
      writeConcern: <document>
    }
+   
 )
