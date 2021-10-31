@@ -73,4 +73,42 @@ async (req,res) => {
 }
 );
 
+router.get('/pending', login,
+async (req,res) => {
+    try {
+        const pendingTeams = await teamSchema.find({status: false}).sort({ date: -1 });
+        res.json(pendingTeams);
+      } catch (err) {
+        console.error(err.message);
+        return res.status(500).send('Server Error');
+      }
+}
+);
+
+router.post('/approve',
+[
+    check('email', 'please include a valid email').isEmail()
+],
+ login,
+async(req,res) => {
+    const errors  = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(400).json( {errors: errors.array()});
+    }
+    try{
+        const email = req.body.email;
+        const approvalTeams = await teamSchema.find({email, status: { $eq: true }}).exec();
+        if(approvalTeams){
+            res.status(400).json({errors: "requested referee is already approved"});
+        }
+        else{
+            let result = await teamSchema.updateOne({email},{$set: { status: true }});
+            return res.send(result);        }
+    }
+    catch(err){
+        return res.status(500).send('Server Error');
+    }
+}
+)
+
 module.exports = router;

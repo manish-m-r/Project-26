@@ -63,8 +63,11 @@ const teamSchema = new mongoose.Schema({
     },
     expiryOfPayment: {
         type: Date
+    },
+    status: {
+        type: Boolean,
+        defualt = false
     }
-
 });
 
 module.exports = team = mongoose.model('team', teamSchema);
