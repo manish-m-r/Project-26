@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {check, validationRequest, validationResult }  = require('express-validator');
 const teamSchema = require('../../models/team');
+const login = require('../../middleware/login');
 
 router.post('/',[
     check('teamName', 'team name is required').not().isEmpty(),
@@ -18,7 +19,6 @@ router.post('/',[
     check('secondName','please provide the second name').not().isEmpty(),
     check('cotactIs','please provide the contact person').not().isEmpty(),
     check('address','please provide the address for the contact').not().isEmpty()
-
 ], 
 async (req,res) => {
     console.log(req.body);
@@ -58,7 +58,7 @@ async (req,res) => {
         res.status(500).send('Server error');
     }
 
-    res.send('team route');
+    res.status(200).json({msg : "Successfully added the team"});
 });
 
 router.get('/',
@@ -98,8 +98,8 @@ async(req,res) => {
     try{
         const email = req.body.email;
         const approvalTeams = await teamSchema.find({email, status: { $eq: true }}).exec();
-        if(approvalTeams){
-            res.status(400).json({errors: "requested referee is already approved"});
+        if(!approvalTeams){
+            res.status(400).json({errors: "requested team is already approved"});
         }
         else{
             let result = await teamSchema.updateOne({email},{$set: { status: true }});

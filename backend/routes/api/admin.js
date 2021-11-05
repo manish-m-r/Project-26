@@ -39,7 +39,7 @@ router.post('/',
               adminInst.password = await bcrypt.hash(password, salt);
 
               await adminInst.save();
-
+              return res.status(200).json({msg: "admin user added succesfully"});
         }
         catch(err){
             console.error(err.message);
@@ -47,29 +47,66 @@ router.post('/',
         }
     });
 
-//     router.get('/',
-// async (req,res) => {
-//     try {
-//         const admins = await admin.find().sort({ date: -1 });
-//         res.json(admins);
-//       } catch (err) {
-//         console.error(err.message);
-//         return res.status(500).send('Server Error');
-//       }
-// }
-// );
+    router.post(
+        '/login',
+        check('email', 'Please include a valid email').isEmail(),
+        check('password', 'Password is required').exists(),
+        async (req, res) => {
+          const errors = validationResult(req);
+          if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+          }
+      
+          const { email, password } = req.body;
+      
+          try {
+            let adminUser = await admin.findOne({ email });
+      
+            if (!adminUser) {
+              return res
+                .status(400)
+                .json({ errors: [{ msg: 'Invalid Credentials' }] });
+            }
+      
+            const isMatch = await bcrypt.compare(password, adminUser.password);
+      
+            if (!isMatch) {
+              return res
+                .status(400)
+                .json({ errors: [{ msg: 'Invalid Credentials' }] });
+            }
+      
+            const payload = {
+              user: {
+                id: adminUser.id
+              }
+            };
+      
+            jwt.sign(
+              payload,
+              config.get('jwtSecret'),
+              { expiresIn: '5 days' },
+              (err, token) => {
+                if (err) throw err;
+                res.json({ token });
+              }
+            );
+          } catch (err) {
+            console.error(err.message);
+            res.status(500).send('Server error');
+          }
+        }
+      );
 
-// router.get('/refereeApprovals',
-// async (req,res) => {
-//     try {
-//         const pendingReferees = await refereeSchema.find({refereeID: null}).sort({ date: -1 });
-//         res.json(pendingReferees);
-//       } catch (err) {
-//         console.error(err.message);
-//         return res.status(500).send('Server Error');
-//       }
-// }
-// );
-
-
+    router.get('/',
+async (req,res) => {
+    try {
+        const admins = await admin.find().sort({ date: -1 });
+        res.json(admins);
+      } catch (err) {
+        console.error(err.message);
+        return res.status(500).send('Server Error');
+      }
+}
+);
 module.exports = router

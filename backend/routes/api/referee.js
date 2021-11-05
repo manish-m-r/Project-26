@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const {check, validationRequest, validationResult }  = require('express-validator');
 const refereeSchema = require('../../models/referee');
-const master = require('../../models/master');
 const login = require('../../middleware/login');
 
 router.post('/',[
@@ -82,7 +81,7 @@ async(req,res) => {
         const referees = await refereeSchema.find({email, refereeID: { $eq: null }}).exec();
         const id= referees.refereeID
         console.log(`${referees}`);
-        if(referees){
+        if(!referees){
             res.status(400).json({errors: "requested referee is already approved"});
         }
         else{
