@@ -1,0 +1,19 @@
+.image {
+    display: flex;
+    justify-content: center;
+}
+
+.homeNavBar {
+    display: flex;
+    justify-content: center;
+}
+
+.Login {
+    padding: 10px;
+}
+
+.input-group mb-3 {
+    display: flex;
+    align-items: flex-start;
+    size: 10%;
+}
