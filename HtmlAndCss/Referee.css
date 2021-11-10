@@ -10,10 +10,46 @@
 
 .Login {
     padding: 10px;
+    display: flex;
+    justify-content: center;
 }
 
-.input-group mb-3 {
+.loginInput {
+    width: auto;
+}
+
+.form-control {
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+}
+
+.display-block {
+
+    display: block;
+}
+
+
+.display-none {
+    display: none;
+}
+
+.btn-info {
+    margin-left: 8px;
+    height: 39px;
+}
+
+.loginPara {
     display: flex;
-    align-items: flex-start;
-    size: 10%;
+    justify-content: center;
+    padding: 10px
+}
+
+.loginAndSignUP {
+    display: flex;
+    justify-content: center;
+}
+
+.loginAndSignUP a {
+    padding-top: 10px;
 }

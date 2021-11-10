@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const refereeSchema = require('../../models/referee');
 const jwtSecret = config.get('jwtSecret');
+var nodemailer = require('nodemailer');
 
 
 router.post('/',
