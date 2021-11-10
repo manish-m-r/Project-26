@@ -1,4 +1,4 @@
 {
-    "mongoURI": "",
+    "mongoURI": "mongodb+srv://socceradmin:socceradmin@soccercluster.lwieh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     "jwtSecret": "mySecret"
 }
