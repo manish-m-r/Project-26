@@ -36,6 +36,10 @@ const refereeSchema = new mongoose.Schema({
   refereeID: {
       type: String,
       default: null
+  },
+  pay: {
+    type: Number,
+    default: 0
   }
 });
 
