@@ -1,0 +1,19 @@
+.image {
+    display: flex;
+    justify-content: center;
+}
+
+.homeNavBar {
+    display: flex;
+    justify-content: center;
+}
+
+.input {
+    display: flex;
+    justify-content: center;
+}
+
+.input-group mb-3 {
+    display: flex;
+    justify-content: center;
+}

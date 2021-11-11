@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+    <title>Referee</title>
+    <center><h1>Referee Details</h1></center>
+    <style>
+        h1{
+            background-color: aliceblue;
+        }
+        button {   
+       background-color: #4CAF50;   
+       width: 30%;  
+        color:black;   
+        padding: 15px;   
+        margin: 10px 0px;   
+        border: none;   
+        cursor: pointer;  
+        font-size: x-large; 
+         }   
+         .container {   
+        padding: 25px;   
+        background-color: lightblue;  
+    }  
+    input[type=text], input[type=number] {   
+        width: 30%;   
+        margin: 8px 0;  
+        padding: 12px 20px;   
+        display: inline-block;   
+        border: 2px solid green;   
+        box-sizing: border-box;   
+    }  
+    </style>
+</head>
+<body>
+    <p>
+        <center>
+    <form action="referee" class="container">
+        Referee Name:<input type="text" name="name" required><br><br><br>
+        Email-Id: <input type="text" name="email" required><br><br><br>
+        Address: <input type="text" name="address" required><br><br><br>
+        Phone Number: <input type="text" name="phone" required><br><br><br>
+        Referee Grade: <input type="number" name="refereeGrade" required><br><br><br>
+        Age: <input type="number" name="age" required><br><br><br>
+        <label for="comfort">Comfort Level:</label>
+        <select name="comfort" id="comfort_level">
+        <option value="girls">Girls</option>
+        <option value="boys">Boys</option>
+        </select>
+        <br><br><br><br>
+        <button type="submit">Submit</button>
+    </form>
+</center>
+</p>
+</body>
