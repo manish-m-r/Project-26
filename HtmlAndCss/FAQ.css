@@ -137,8 +137,7 @@ flex-direction: column;
 @media (max-width: 768px) {
   .footer-clean .item.social {
     text-align:center;
-  }
-}
+  }}
 
 
 .footer-clean .item.social > a {
