@@ -8,7 +8,6 @@
             body
             {
                 background-image: url('https://images.alphacoders.com/785/78531.jpg') !important;
-                
                 background-repeat: no-repeat;
                 background-attachment: fixed;
                 background-size: cover; 
@@ -20,13 +19,10 @@
               
             }
 
-          
-
             .data{
                 
                 color: black;
                 font-weight: bold;
-                
                 display: block !important;
 
             }
@@ -35,21 +31,21 @@
             {
                 color: black;
                 font-weight: bold;
+
               
             }
 
-            .myinput{
-                        width: 200px;
-                        height: 30px;
-                        padding-top: 10px;
+            .Home 
+            {
+                display: flex;
+                justify-content: center;
+                padding: 30px 32px;
             }
-
-
 
 
             .login-page {
             width: 360px;
-            padding: 8% 0 0;
+            padding: 0 0 0;
             margin: auto;
             }
 
@@ -63,6 +59,7 @@
             text-align: center;
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
             }
+
             .form1 input {
             font-family: "Roboto", sans-serif;
             outline: 0;
@@ -74,20 +71,7 @@
             box-sizing: border-box;
             font-size: 14px;
             }
-            .form1 button {
-            font-family: "Roboto", sans-serif;
-            text-transform: uppercase;
-            outline: 0;
-            background: #4CAF50;
-            width: 100%;
-            border: 0;
-            padding: 15px;
-            color: #FFFFFF;
-            font-size: 14px;
-            -webkit-transition: all 0.3 ease;
-            transition: all 0.3 ease;
-            cursor: pointer;
-            }
+
             .form1 button:hover,.form button:active,.form button:focus {
             background: #43A047;
             }
@@ -117,21 +101,22 @@
         <p>
             <h1 style="text-align: center;">WELCOME ADMIN - Please enter your details</h1>
         </p>
+        
+        
+
+            <div class="Home">   
+                <a href='/'> <button class='home' name='home'>Home</button></a>
+            </div>    
 
             <div class="login-page">
                 <div class="form1">        
                         <form class="admin" action="/" method="POST">
                            
-
-                            <div class="data1">Username <input class="myinput" required type="text" name="username" size="10" pattern="[a-zA-Z]*" placeholder="Enter username" value=""/><br/></div>
-                            <div class="data2">Email Address <input required type="text" name="email" size="10" pattern="[a-zA-Z]*" placeholder="Enter email address" value=""/><br/></div>
-                            <div class="data3">Password <input required type="password" name="password" id="password" size="10" pattern="[a-zA-Z]*" placeholder="Enter password"  value=""/><br/>
+                            <div class="data1">Email Address <input required type="text" name="email" size="10" pattern="[a-zA-Z]*" placeholder="Enter email address" value=""/><br/></div>
+                            <div class="data2">Password <input required type="password" name="password" id="password" size="10" pattern="[a-zA-Z]*" placeholder="Enter password"  value=""/><br/>
                             <input type="checkbox" onclick="myFunction()">Show Password<br/><br/><br/>
                             <input type="submit" name="action" value="Login"/><br/></div>
-                           
-                            
-
-                        
+                                                
                         </form>
                 </div> 
                         

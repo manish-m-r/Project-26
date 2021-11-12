@@ -1,0 +1,18 @@
+.image {
+    display: flex;
+    justify-content: center;
+}
+
+.homeNavBar {
+    display: flex;
+    justify-content: center;
+}
+
+.name {
+    align-items: center;
+    padding-left: 10px;
+}
+
+.form-label {
+    align-items: center;
+}
