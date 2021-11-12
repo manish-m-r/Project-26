@@ -1,0 +1,171 @@
+.image {
+    display: flex;
+    justify-content: center;
+}
+.homeNavBar {
+    display: flex;
+    justify-content: center;
+}
+.faq-heading{
+    border-bottom: #777;
+    padding: 30px 0px;
+    text-align: center;
+    -webkit-text-fill-color: darkblue;
+    font-family: "Georgia", Times, serif;
+}
+.faq-container{
+display: flex;
+justify-content: center;
+flex-direction: column;
+
+}
+.hr-line{
+  width: 60%;
+  margin: auto;
+  
+}
+/* Style the buttons that are used to open and close the faq-page body */
+.faq-page {
+    /* background-color: #eee; */
+    color: black;
+    cursor: pointer;
+    font-size: 25px;
+    padding: 30px 20px;
+    width: 65%;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    margin: auto;
+     font-family: "Courier New", Times, serif;
+
+}
+.faq-body{
+    margin: auto;
+    /* text-align: center; */
+   width: 60%; 
+   font-size: 19px;
+   padding: auto;
+   
+}
+.faq-main {
+    /* background-color: #eee; */
+    padding: 30px 20px;
+    width: 100%;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    text-align: center;
+    font-family: "Garamond", Times, serif;
+    font-weight: 900;
+
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.faq-page:hover {
+    background-color: lightsteelblue;
+}
+/* Style the faq-page panel. Note: hidden by default */
+.faq-body {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+}
+.faq-page:after {
+    content: '\02795';
+    /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: black;
+    float: right;
+    margin-left: 5px;
+}
+.active:after {
+    content: "\2796";
+    /* Unicode character for "minus" sign (-) */
+}
+.faq-info{
+      padding: 30px 20px;
+    width: 100%;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    text-align: center;
+
+}
+
+
+.footer-clean {
+  padding:50px 0;
+  background-color: darkgray;
+  color:#4b4c4d;
+}
+
+.footer-clean h3 {
+  margin-top:0;
+  margin-bottom:12px;
+  font-weight:bold;
+  font-size:16px;
+}
+
+.footer-clean ul {
+  padding:0;
+  list-style:none;
+  line-height:1.6;
+  font-size:14px;
+  margin-bottom:0;
+}
+
+.footer-clean ul a {
+  color:inherit;
+  opacity:0.8;
+}
+
+
+
+.footer-clean .item.social {
+  text-align:right;
+}
+
+@media (max-width:767px) {
+  .footer-clean .item {
+    text-align:center;
+    padding-bottom:20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-clean .item.social {
+    text-align:center;
+  }
+}
+
+
+.footer-clean .item.social > a {
+  font-size:24px;
+  width:40px;
+  height:40px;
+  line-height:40px;
+  display:inline-block;
+  text-align:center;
+  border-radius:50%;
+  border:1px solid #ccc;
+  margin-left:10px;
+  margin-top:22px;
+  color:inherit;
+  opacity:0.75;
+}
+
+.footer-clean .item.social > a:hover {
+  opacity:0.9;
+}
+
+
+.footer-clean .copyright {
+  margin-top:14px;
+  margin-bottom:0;
+  font-size:13px;
+  opacity:0.6;
+  text-align:center;
+  width: 140%;
+}
