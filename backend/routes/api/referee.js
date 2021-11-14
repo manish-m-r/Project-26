@@ -118,7 +118,7 @@ async(req,res) => {
               
               var mailOptions = {
                 from: 'team26soccer@gmail.com',
-                to: 'upolishe@asu.edu',
+                to: email,
                 subject: 'Congrats you application for referee is now approved',
                 text: 'Congratualtions!!'
               };

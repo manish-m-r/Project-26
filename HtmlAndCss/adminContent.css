@@ -8,24 +8,23 @@
     justify-content: center;
 }
 
-.loginInput {
+.mydropdown {
     display: flex;
     justify-content: center;
     width: auto;
 }
 
-.form-control {
-    width: auto;
-}
-
-.input {
+.opionButtons {
     display: flex;
     justify-content: center;
-    flex-direction: column;
 }
 
-.btn-info {
-    width: 20%;
-    margin-left: 8px;
-    align-self: center;
+.obtn {
+    margin-left: 1%;
 }
+
+.refereePaySection {
+    align-items: center;
+    vertical-align: middle
+}
+
