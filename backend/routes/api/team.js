@@ -21,16 +21,18 @@ router.post('/',[
     check('address','please provide the address for the contact').not().isEmpty()
 ], 
 async (req,res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const errors  = validationResult(req);
     if(!errors.isEmpty()){
         return res.status(400).json( {errors: errors.array()});
     }
     const { teamName,email,applicationAgeGroup,leagueGender,leagueAge,dobOfOldest,coachName,clubName,association,league,firstName,secondName,cotactIs,address } = req.body;
     try{
-        let teamname = await teamSchema.findOne({teamname : `${req.body.teamname}`});
-        if(teamname){
-            res.status(400).json({errors: [{msg: "please use another team name"}]});
+        const temNameVal = req.body.teamName
+        let teamnameRes = await teamSchema.findOne({teamName : temNameVal});
+        console.log(teamnameRes);
+        if(teamnameRes){
+            return res.status(400).json({errors: [{msg: "please use another team name"}]});
         }
         
         team = new teamSchema({
@@ -51,17 +53,17 @@ async (req,res) => {
         });
 
         await team.save();
-
+        res.status(200).json({"msg" : "Successfully added the team"});
     }
     catch(err){
         console.error(err.message);
-        res.status(500).send('Server error');
+        res.status(500).json({"msg" : err.message});
     }
 
-    res.status(200).json({msg : "Successfully added the team"});
+    
 });
 
-router.get('/',
+router.get('/', login,
 async (req,res) => {
     try {
         const teams = await teamSchema.find().sort({ date: -1 });
@@ -110,5 +112,6 @@ async(req,res) => {
     }
 }
 )
+
 
 module.exports = router;

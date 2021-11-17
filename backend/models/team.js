@@ -56,7 +56,8 @@ const teamSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     teamIdNumber: {
         type: String
