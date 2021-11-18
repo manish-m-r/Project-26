@@ -56,6 +56,13 @@
         <button type="button" class="btn btn-success obtn" onclick="pendingTeamApproval()">Approve</button>
         <button type="button" class="btn btn-danger obtn" onclick="pendingTeamReject()">Reject</button>
     </div>
+    </br>
+    <p style="text-align: center" class="text-justify">Schedule Tournaments</p>
+    <div class="schedule-tournament">
+        <input type="text" values="" id="team1-name" placeholder="Enter team1 mail address" aria-describedby="basic-addon2"/>
+        <input type="text" values="" id="team2-name" placeholder="Enter team1 mail address" aria-describedby="basic-addon2"/>
+        <button type="button" class="btn btn-secondary obtn" onclick="scheduleTournament()">Schedule</button>
+    </div>
       <script> 
          var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE3Zjc1OTg5ZDA4ZTU5YWM0ZTRhNTU3In0sImlhdCI6MTYzNjc3NDU4NCwiZXhwIjoxNjM3MjA2NTg0fQ.V-EyjF5ei2fR83jV44YYy55oPVxZ6XygAEbEG0R4mT0"
          var settings = {
@@ -153,6 +160,29 @@
                         alert("Added the amount to requested referee");
                         });
                 }
+            }
+
+            function scheduleTournament(){
+                var settings = {
+                    "url": "http://localhost:5000/api/tournaments",
+                    "method": "POST",
+                    "timeout": 0,
+                    "headers": {
+                        "x-auth-token": token,
+                        "Content-Type": "application/json"
+                    },
+                    "data": JSON.stringify({
+                        "team1": document.getElementById("team1-name").value,
+                        "team2": document.getElementById("team2-name").value
+                    }),
+                    };
+                    $.ajax(settings).done(function (response) {
+                    alert("success scheduled the tournament");
+                }).fail(function(jqXHR, textStatus){
+                    console.log(jqXHR)
+                    console.log(textStatus)
+                    alert(jqXHR.responseText)
+                });
             }
       </script>
 </body>
