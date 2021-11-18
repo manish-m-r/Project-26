@@ -36,12 +36,11 @@ async (req,res) => {
     }
 });
 
-router.get('/getPersonalDetails',
+router.get('/',
 async (req,res) => {
     try {
-        const email = req.query.date;
-        const referee = await refereeSchema.find({email}).exec();
-        res.json(referee);
+        const matches = await tournamentSchema.find().sort({ date: -1 }).exec();
+        res.json(matches);
       } catch (err) {
         console.error(err.message);
         return res.status(500).send('Server Error');
