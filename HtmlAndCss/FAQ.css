@@ -80,10 +80,6 @@ flex-direction: column;
     float: right;
     margin-left: 5px;
 }
-.active:after {
-    content: "\2796";
-    /* Unicode character for "minus" sign (-) */
-}
 .faq-info{
       padding: 30px 20px;
     width: 100%;
