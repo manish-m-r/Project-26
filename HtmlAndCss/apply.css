@@ -1,0 +1,28 @@
+.image {
+    display: flex;
+    justify-content: center;
+}
+
+.homeNavBar {
+    display: flex;
+    justify-content: center;
+}
+
+.loginInput {
+    display: flex;
+    justify-content: center;
+    width: auto;
+    padding-bottom: 10px;
+}
+
+.input {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.btn-info {
+    width: 20%;
+    margin-left: 8px;
+    align-self: center;
+}
