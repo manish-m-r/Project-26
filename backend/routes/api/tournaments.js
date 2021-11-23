@@ -7,8 +7,8 @@ const login = require('../../middleware/login');
 var nodemailer = require('nodemailer');
 
 router.post('/',[
-    check('team1', 'Provide the team1 email address').not().isEmpty(),
-    check('team2', 'Provide the team2 email address').not().isEmpty()
+    check('team1', 'Provide the team1 club name').not().isEmpty(),
+    check('team2', 'Provide the team2 club name').not().isEmpty()
 ], login, 
 async (req,res) => {
     const errors  = validationResult(req);
