@@ -33,6 +33,10 @@
             <label>Application Age Group:</label>
             <select name="Application Age Group" id='ageGroup'>
                 <option value="0">--Select--</option>
+                <option value="1">Boys U08</option>
+                <option value="2">Girls U08</option>
+                <option value="3">Boys U09</option>
+                <option value="4">Girls U09</option>
             </select>
         </div>
 
@@ -116,6 +120,11 @@
             <input type="text" id="emailId" aria-describedby="basic-addon2" value="" size="20%">
         </div>
 
+        <div class="input-group mb-3 loginInput">
+            <label>Address:</label>
+            <input type="text" id="address" aria-describedby="basic-addon2" value="" size="20%">
+        </div>
+
         <button type="button" class="btn btn-info" onclick="apply()">Submit</button>
     </div>
     
@@ -143,12 +152,14 @@
                 "firstName": document.getElementById("firstName").value,
                 "secondName": document.getElementById("secondName").value,
                 "cotactIs": document.getElementById("contactIs").value,
-                "address": document.getElementById("ageGroup").value
+                "address": document.getElementById("address").value
             }),
             };
-
+            console.log(settings)
             $.ajax(settings).done(function (response) {
             console.log(response);
+            alert('Successfully added team');
+            window.location.reload();
             });
         }
 

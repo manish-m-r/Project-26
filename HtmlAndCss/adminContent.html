@@ -59,12 +59,14 @@
     </br>
     <p style="text-align: center" class="text-justify">Schedule Tournaments</p>
     <div class="schedule-tournament">
-        <input type="text" values="" id="team1-name" placeholder="Enter team1 mail address" aria-describedby="basic-addon2"/>
-        <input type="text" values="" id="team2-name" placeholder="Enter team1 mail address" aria-describedby="basic-addon2"/>
+        <input type="text" values="" id="team1-name" placeholder="Enter team1 club name" aria-describedby="basic-addon2"/>
+        <input type="text" values="" id="team2-name" placeholder="Enter team1 club name" aria-describedby="basic-addon2"/>
+        <input type="text" values="" id="referee-name" placeholder="Enter a referee" aria-describedby="basic-addon2"/>
         <button type="button" class="btn btn-secondary obtn" onclick="scheduleTournament()">Schedule</button>
     </div>
       <script> 
-         var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE3Zjc1OTg5ZDA4ZTU5YWM0ZTRhNTU3In0sImlhdCI6MTYzNjc3NDU4NCwiZXhwIjoxNjM3MjA2NTg0fQ.V-EyjF5ei2fR83jV44YYy55oPVxZ6XygAEbEG0R4mT0"
+         const queryString = window.location.search;
+         var token= queryString.split('=')[1]
          var settings = {
             "url": "http://localhost:5000/api/referee/pending",
             "method": "GET",
@@ -130,7 +132,27 @@
                 }),
                 };
                 $.ajax(settings).done(function (response) {
-                alert("Requested referee is approved");
+                alert("Requested referee is approved and notification sent to referee");
+                });
+            }
+
+            function pendingTeamApproval(){
+                var pendingteams = document.getElementById('pendingteams').value
+                var settings = {
+                "url": "http://localhost:5000/api/team/approve",
+                "method": "POST",
+                "timeout": 0,
+                "headers": {
+                    "Content-Type": "application/json",
+                    "x-auth-token": token
+                },
+                "data": JSON.stringify({
+                    "email": pendingteams
+                }),
+                };
+                console.log(settings);
+                $.ajax(settings).done(function (response) {
+                alert("Requested Team is approved and notitifcation sent to POC");
                 });
             }
 
@@ -173,7 +195,8 @@
                     },
                     "data": JSON.stringify({
                         "team1": document.getElementById("team1-name").value,
-                        "team2": document.getElementById("team2-name").value
+                        "team2": document.getElementById("team2-name").value,
+                        "referee": document.getElementById("referee-name").value
                     }),
                     };
                     $.ajax(settings).done(function (response) {
