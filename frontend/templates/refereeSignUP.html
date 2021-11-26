@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/refereeSignUP.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Soccer Portal</title>
+</head>
+<body>
+    <div class="image">
+        <img src="/static/img.png" alt="Logo">
+    </div>
+    <br/>
+    <div class="homeNavBar">
+        <nav class="nav nav-pills">
+            <a class="nav-link"  href="/">About</a>
+            <a class="nav-link" href="apply">Apply</a>
+            <a class="nav-link" href="hotels">Hotel</a>
+            <a class="nav-link" href="faq">FAQ</a>
+            <a class="nav-link" href="team">Team, Schedule</a>
+            <a class="nav-link" href="sponsors">Sponsors</a>
+            <a class="nav-link active" aria-current="page" href="referee">Referee</a>
+        </nav>
+    </div> 
+
+    <div class="refereeInputDetails">
+        <div class="input-group mb-3 loginInput">
+            <label class="label">Name: </label>
+            <input type="text" id="firstName" aria-describedby="basic-addon2" value="" size="20%">
+        </div>
+
+        <div class="input-group mb-3 loginInput">
+            <label class="label">Email: </label>
+            <input type="text" id="emailAddress" aria-describedby="basic-addon2" value="" size="20%">
+        </div>
+
+        <div class="input-group mb-3 loginInput">
+            <label class="label">Address: </label>
+            <input type="text" id="address" aria-describedby="basic-addon2" value="" size="20%">
+        </div>
+
+        <div class="input-group mb-3 loginInput">
+            <label class="label">Phone Number: </label>
+            <input type="text" id="phoneNumber" aria-describedby="basic-addon2" value="" size="20%">
+        </div>
+
+        <div class="input-group mb-3 loginInput">
+            <label class="label">Grade: </label>
+            <input type="text" id="grade" aria-describedby="basic-addon2" value="" size="20%">
+        </div>
+
+        <div class="input-group mb-3 loginInput">
+            <label class="label">Age: </label>
+            <input type="text" id="age" aria-describedby="basic-addon2" value="" size="20%">
+        </div>
+
+
+        <div class="loginInput">
+            <label class="label">Comfort Levels: </label>
+            <select id='league'>
+                <option value="0">--Select--</option>
+                <option value="1">Girls</option>
+                <option value="2">Boys</option>
+            </select>
+        </div>
+
+        <button type="button" class="btn btn-info" onclick="apply()">Submit</button>
+    </div>
+    <script>
+        function apply(){
+            var settings = {
+                "url": "http://localhost:5000/api/referee",
+                "method": "POST",
+                "timeout": 0,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "data": JSON.stringify({
+                    "name": document.getElementById('firstName').value,
+                    "email": document.getElementById('emailAddress').value,
+                    "address": document.getElementById('address').value,
+                    "phone": document.getElementById('phoneNumber').value,
+                    "refereeGrade": document.getElementById('grade').value,
+                    "age": document.getElementById('age').value,
+                    "comfortLevels": document.getElementById('league').value
+                }),
+                };
+
+                $.ajax(settings).done(function (response) {
+                console.log(response);
+                alert("successfully added your request");
+                window.location.reload();
+                });
+        }
+    </script>
+    
+</body>
+</html>

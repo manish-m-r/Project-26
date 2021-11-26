@@ -1,0 +1,18 @@
+.image {
+    display: flex;
+    justify-content: center;
+}
+
+.homeNavBar {
+    display: flex;
+    justify-content: center;
+}
+
+.display-block {
+    display: block;
+}
+
+
+.display-none {
+    display: none;
+}
