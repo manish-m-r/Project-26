@@ -66,7 +66,9 @@ const teamSchema = new mongoose.Schema({
         type: Date
     },
     status: {
-        type: Boolean
+        type: Boolean,
+        required: true,
+        default: false
     }
 });
 

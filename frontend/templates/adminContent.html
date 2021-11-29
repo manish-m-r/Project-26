@@ -7,24 +7,23 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="adminContent.css">
+    <link rel="stylesheet" href="/static/adminContent.css">
     <title>Document</title>
 </head>
 <body>
     <div class="image">
-        <img src="./img.png" alt="Logo">
+        <img src="/static/img.png" alt="Logo">
     </div>
     <br/>
     <div class="homeNavBar">
         <nav class="nav nav-pills">
-            <a class="nav-link" href="./index.html">About</a>
-            <a class="nav-link" href="./apply.html">Apply</a>
-            <a class="nav-link" href="./Hotels.html">Hotel</a>
-            <a class="nav-link" href="./FAQ.html">FAQ</a>
-            <a class="nav-link" href="./Team.html">Team, Schedule</a>
-            <a class="nav-link" href="./Sponsors.html">Sponsors</a>
-            <a class="nav-link" href="./Referee.html">Referee</a>
-            <a class="nav-link active" aria-current="page" href="#">Admin</a>
+            <a class="nav-link" href="/">About</a>
+            <a class="nav-link" href="apply">Apply</a>
+            <a class="nav-link" href="hotels">Hotel</a>
+            <a class="nav-link" href="faq">FAQ</a>
+            <a class="nav-link" href="team">Team, Schedule</a>
+            <a class="nav-link" href="sponsors">Sponsors</a>
+            <a class="nav-link" href="referee">Referee</a>
         </nav>
     </div>
     <br/>
@@ -59,12 +58,13 @@
     </br>
     <p style="text-align: center" class="text-justify">Schedule Tournaments</p>
     <div class="schedule-tournament">
-        <input type="text" values="" id="team1-name" placeholder="Enter team1 mail address" aria-describedby="basic-addon2"/>
-        <input type="text" values="" id="team2-name" placeholder="Enter team1 mail address" aria-describedby="basic-addon2"/>
+        <input type="text" values="" id="team1-name" placeholder="Enter team1 club name" aria-describedby="basic-addon2"/>
+        <input type="text" values="" id="team2-name" placeholder="Enter team1 club name" aria-describedby="basic-addon2"/>
+        <input type="text" values="" id="referee-name" placeholder="Enter a referee" aria-describedby="basic-addon2"/>
         <button type="button" class="btn btn-secondary obtn" onclick="scheduleTournament()">Schedule</button>
     </div>
-      <script> 
-         var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE3Zjc1OTg5ZDA4ZTU5YWM0ZTRhNTU3In0sImlhdCI6MTYzNjc3NDU4NCwiZXhwIjoxNjM3MjA2NTg0fQ.V-EyjF5ei2fR83jV44YYy55oPVxZ6XygAEbEG0R4mT0"
+      <script>
+         var token= window.location.href.toString().split('/')[4]
          var settings = {
             "url": "http://localhost:5000/api/referee/pending",
             "method": "GET",
@@ -130,7 +130,27 @@
                 }),
                 };
                 $.ajax(settings).done(function (response) {
-                alert("Requested referee is approved");
+                alert("Requested referee is approved and notification sent to referee");
+                });
+            }
+
+            function pendingTeamApproval(){
+                var pendingteams = document.getElementById('pendingteams').value
+                var settings = {
+                "url": "http://localhost:5000/api/team/approve",
+                "method": "POST",
+                "timeout": 0,
+                "headers": {
+                    "Content-Type": "application/json",
+                    "x-auth-token": token
+                },
+                "data": JSON.stringify({
+                    "email": pendingteams
+                }),
+                };
+                console.log(settings);
+                $.ajax(settings).done(function (response) {
+                alert("Requested Team is approved and notitifcation sent to POC");
                 });
             }
 
@@ -173,7 +193,8 @@
                     },
                     "data": JSON.stringify({
                         "team1": document.getElementById("team1-name").value,
-                        "team2": document.getElementById("team2-name").value
+                        "team2": document.getElementById("team2-name").value,
+                        "referee": document.getElementById("referee-name").value
                     }),
                     };
                     $.ajax(settings).done(function (response) {

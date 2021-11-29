@@ -9,6 +9,10 @@ const tournamentSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  referee: {
+    type: String,
+    required: true
+  },
   date: {
     type: Date,
     default: () => Date.now() + 10*24*60*60*1000
