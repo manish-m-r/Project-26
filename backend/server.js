@@ -1,10 +1,10 @@
 const express = require('express');
+const path= require('path')
 const connectDB = require('./config/db');
 var cors = require('cors');
-
 const app = express();
 
-app.get('/',(req,res) => res.send('API Running'));
+//app.get('/',(req,res) => res.send('API Running'));
 connectDB();
 
 app.use(cors());
@@ -13,6 +13,27 @@ app.use('/api/admin', require('./routes/api/admin'));
 app.use('/api/team', require('./routes/api/team'));
 app.use('/api/referee', require('./routes/api/referee'));
 app.use('/api/tournaments', require('./routes/api/tournaments'));
+
+
+// GET route '/'
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname + '/HtmlAndCss/index.html')); 
+})
+
+app.get('/referee.html', function (req, res) {
+   res.sendFile(path.join(__dirname + '/HtmlAndCss/referee.html'));
+})
+
+app.get('/refereeSignUP.html', function (req, res) {
+   res.sendFile(path.join(__dirname + '/HtmlAndCss/refereeSignUP.html'));
+})
+
+
+app.get('/admin.html', function (req, res) {
+   res.sendFile(path.join(__dirname + '/HtmlAndCss/admin.html')); 
+})
+
+
 
 
 const PORT = process.env.PORT || 5000;
