@@ -8,17 +8,32 @@
     justify-content: center;
 }
 
-.loginInput {
-    display: flex;
-    justify-content: center;
-    width: auto;
-    padding-bottom: 10px;
-}
+input[type=text], input[type=password] {  
+    margin: 5px 0 22px 0;
+    width: 100%;
+    border: none; 
+  } 
+  
+  select {  
+    margin: 5px 0 22px 0;
+    padding: 5px;
+    width: 100%;
+    border: none; 
+  }
+
+  input[type=date] {
+    width:25%;
+    border: double;
+  }
 
 .input {
     display: flex;
+    margin: 20px 20px 20px 20px;
+    border-radius: 20px;
     justify-content: center;
     flex-direction: column;
+    padding: 20px;
+    background-color: rgb(230, 195, 175);
 }
 
 .btn-info {

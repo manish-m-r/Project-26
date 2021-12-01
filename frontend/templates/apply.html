@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/apply.css">
+    <link rel="stylesheet" href="/static/index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Soccer Portal</title>
 </head>
 <body>
     <div class="image">
-        <img src="/static/img.png" alt="Logo">
+        <img src="/static/Logos.png" alt="Logo" width="300px" height="100px">
     </div>
     <br/>
     <div class="homeNavBar">
@@ -26,8 +27,11 @@
         </nav>
     </div>
     <br/>
+
+    <hr size="7" width="100%" color="black">
     
     <div class="input">
+        <center><h2 style="padding-bottom: 10px;">Application Form</h2></center>
         <div class="loginInput">
             <label>Application Age Group:</label>
             <select name="Application Age Group" id='ageGroup'>
@@ -46,7 +50,7 @@
 
         <div class="loginInput">
             <label>Gender:</label>
-            <select id='gender'>
+            <select id='gender' style="width: 100%; border: none;">
                 <option value="0">--Select--</option>
                 <option value="1">Male</option>
                 <option value="2">Female</option>
@@ -56,7 +60,7 @@
 
         <div class="input-group mb-3 loginInput">
             <label>Age:</label>
-            <input type="text" id="age" aria-describedby="basic-addon2" value="" size="20%">
+            <input type="text" id="age" aria-describedby="basic-addon2" value="" size="20%" width="">
         </div>
 
         <div class="loginInput">
@@ -70,7 +74,7 @@
         </div>
 
         <div class="input-group mb-3 loginInput">
-            <label>DOB Of Oldest:</label>
+            <label style="margin-right: 10px;">DOB Of Oldest:</label> 
             <input type="date" id="dobOfOldest" name="trip-start" min="2018-01-01">
         </div>
 
@@ -163,6 +167,33 @@
         }
 
     </script>
+
+<hr size="10" width="100%" color="black">
+
+<footer>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+ 
+<ul class="social-menu">
+    <li><a href="https://facebook.com/"><i class="fab fa-facebook"></i></a></li>
+    <li><a href="https://linkedin.com/"><i class="fab fa-linkedin"></i></a></li>
+    <li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
+    <li><a href="https://instagram.com/"><i class="fab fa-instagram"></i> </a></li>
+    <li><a href="https://youtube.com/"><i class="fab fa-youtube"></i> </a></li>
+</ul>
+
+
+<div class="rule-section">
+<br>Blasters Soccer Club
+<br>
+Blasters Soccer Club - PO Box 85282 - Tempe AZ 45424 480-765-7876 David Chad
+</br>
+Content on this site is ©Copyright 1999-2021 Rivershark Inc. All rights reserved worldwide.
+<br>  
+</div>
+
+ 
+  </p>
+</footer>
 
 </body>
 </html>
