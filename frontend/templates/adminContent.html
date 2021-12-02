@@ -132,6 +132,7 @@
                 };
                 $.ajax(settings).done(function (response) {
                 alert("Requested referee is approved and notification sent to referee");
+                window.location.reload();
                 });
             }
 
@@ -152,6 +153,7 @@
                 console.log(settings);
                 $.ajax(settings).done(function (response) {
                 alert("Requested Team is approved and notitifcation sent to POC");
+                window.location.reload();
                 });
             }
 
@@ -179,6 +181,7 @@
                         $.ajax(settings).done(function (response) {
                         console.log("postive")
                         alert("Added the amount to requested referee");
+                        window.location.reload();
                         });
                 }
             }
@@ -200,10 +203,12 @@
                     };
                     $.ajax(settings).done(function (response) {
                     alert("success scheduled the tournament");
+                    window.location.reload();
                 }).fail(function(jqXHR, textStatus){
                     console.log(jqXHR)
                     console.log(textStatus)
                     alert(jqXHR.responseText)
+                    window.location.reload();
                 });
             }
       </script>

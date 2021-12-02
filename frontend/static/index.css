@@ -1,3 +1,11 @@
+body
+{
+    background-image: url('https://wall.alphacoders.com/big.php?i=595875') !important;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover; 
+}
+
 .image {
     display: flex;
     justify-content: center;

@@ -52,13 +52,14 @@
         };
 
         $.ajax(settings).done(function (response) {
+            i = 1
             response.forEach(element => {
                 console.log(element)
                 var a  = document.getElementById("container");
                 var c = `
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
-                    <h5 class="card-title">Match</h5>
+                    <h5 class="card-title">Match ${i}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">${element.team1}</h6>
                     <h6 class="card-subtitle mb-2 text-muted">${element.team2}</h6>
                     <p class="card-text">${element.date.split('T')[0]}</p>
@@ -66,6 +67,9 @@
                 </div>
                 `;
                 $('#container').append(c);
+                i = i+1
+                debugger;
+                console.log(i)
             });
         });
 

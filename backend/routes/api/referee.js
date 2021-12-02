@@ -139,7 +139,63 @@ async(req,res) => {
         return res.status(500).send('Server Error');
     }
 }
-)
+);
+
+router.post('/pay',
+[
+    check('email', 'please include a valid email').isEmail(),
+    check('amount', 'Enter the amount that should be added').notEmpty()
+],
+ login,
+async(req,res) => {
+    const errors  = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(400).json( {errors: errors.array()});
+    }
+    try{
+        const email = req.body.email;
+        const pay = req.body.amount;
+        const referees = await refereeSchema.find({email}).exec();
+        const id= referees[0].pay
+        if(!referees){
+            res.status(400).json({errors: "No requested referee is available"});
+        }
+        else{
+            let result = await refereeSchema.updateOne({email},{$set: { pay: parseInt(id)+parseInt(pay) }});
+            return res.json({"msg": "successfully updated referee pay"});        
+        }
+    }
+    catch(err){
+        return res.status(500).send('Server Error');
+    }
+}
+);
+
+router.get('/pay',
+[
+    check('email', 'please include a valid email').isEmail()
+],
+async(req,res) => {
+    const errors  = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(400).json( {errors: errors.array()});
+    }
+    try{
+        const email = req.body.email;
+        const referees = await refereeSchema.find({email}).exec();
+        const id= referees[0].pay
+        if(!referees){
+            res.status(400).json({errors: "No requested referee is available"});
+        }
+        else{
+            return res.json({"Pay": id});        
+        }
+    }
+    catch(err){
+        return res.status(500).send('Server Error');
+    }
+}
+);
 
 
 module.exports = router;

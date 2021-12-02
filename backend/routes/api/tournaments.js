@@ -15,7 +15,7 @@ async (req,res) => {
     if(!errors.isEmpty()){
         return res.status(400).json( {errors: errors.array()});
     }
-    const { team1,team2 } = req.body;
+    const { team1,team2,referee } = req.body;
     const matches = await tournamentSchema.find({$and:[{team1},{team2},{date : { "$gt" : new Date() }}]})
     if(matches.length>Number(0)){
         return res.status(400).json({"msg": "same match is already scheduled"});
@@ -23,7 +23,8 @@ async (req,res) => {
     try{
         match = new tournamentSchema({
             team1,
-            team2
+            team2,
+            referee
         });
 
         await match.save();
